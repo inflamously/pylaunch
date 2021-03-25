@@ -21,18 +21,3 @@ graph LR
 		script -- executes --> sourcecode
 	end
 ```
-
----
-
-#### Taskforce
-
-| Entities     |      |      |
-| ------------ | :--- | ---- |
-| User         |      |      |
-| Window       |      |      |
-| App          |      |      |
-| List<Script> |      |      |
-| Script       |      |      |
-| Sourcecode   |      |      |
-|              |      |      |
-
