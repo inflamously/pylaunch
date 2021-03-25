@@ -1,0 +1,4 @@
+{
+  "ui-path": "./ui/pylaunch/dist/pylaunch/",
+  "index-file": "index.html"
+}
