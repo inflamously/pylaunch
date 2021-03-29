@@ -35,12 +35,13 @@ As an User I want to update the program without thinking about it.
 graph TD
 	bf --> bb --> bf
 	eb --- ef
+	state -- used by --> components
+	components -- store global data into --> state
 	
 	subgraph Frontend
 		ef("eel")
 		bf("bridge")
-		components -- store global data into --> state
-		state -- used by --> components
+		components
 	end
 
 	subgraph Backend
@@ -50,6 +51,10 @@ graph TD
 	
 	subgraph Store
 		state
+	end
+	
+	subgraph StoreConfig [Store Config]
+		
 	end
 ````
 
