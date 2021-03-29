@@ -1,3 +1,4 @@
+from fuelstarter import fuelstarter
 import eel
 
 from infrastructure.bridge_frontend import bridge
