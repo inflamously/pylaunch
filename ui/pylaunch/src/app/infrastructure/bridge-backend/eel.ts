@@ -1,5 +1,3 @@
-import { Observable, of } from "rxjs";
-
 export module eel {
   export function exec(name: string, ...args: any[]): Promise<any> {
     return new Promise((resolve, reject) => {

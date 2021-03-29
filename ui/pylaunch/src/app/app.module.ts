@@ -7,11 +7,13 @@ import { filter } from 'rxjs/operators';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { testConfig } from './domain/ui-config/ui.config.action';
 import { configReducer } from './domain/ui-config/ui.config.reducer';
 import { selectTestConfig } from './domain/ui-config/ui.config.selector';
 import { BridgeTestComponent } from './infrastructure/bridge-backend/bridge-test/bridge-test.component';
 import { HeaderComponent } from './ui/header/header.component';
+import { EffectsModule } from '@ngrx/effects';
+import { ConfigEffect } from './domain/ui-config/ui.config.effects';
+import { asyncLoadConfig } from './domain/ui-config/ui.config.action';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { HeaderComponent } from './ui/header/header.component';
       maxAge: 25,
       logOnly: environment.production
     }),
+    EffectsModule.forRoot([ConfigEffect])
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -35,7 +38,7 @@ export class AppModule {
   constructor(
     store: Store
   ) {
-    store.dispatch(testConfig());
-    store.select(selectTestConfig).subscribe((v) => console.log(v));
+    store.dispatch(asyncLoadConfig());
+    // store.select(selectTestConfig).subscribe((v) => console.log(v));
   }
 }
