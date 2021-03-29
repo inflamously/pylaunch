@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { State, Store, StoreModule } from '@ngrx/store';
-import { config } from 'rxjs';
+import { Store, StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment.prod';
+import { filter } from 'rxjs/operators';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +22,11 @@ import { HeaderComponent } from './ui/header/header.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ config: configReducer })
+    StoreModule.forRoot({ config: configReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
