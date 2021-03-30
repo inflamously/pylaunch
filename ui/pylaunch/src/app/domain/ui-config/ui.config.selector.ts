@@ -1,3 +1,3 @@
-import { createSelector } from "@ngrx/store";
+import { AppConfigState } from "./ui.config.interface";
 
-export const selectTestConfig = (state: {config: {test: any}}) => state.config.test;
+export const selectConfig = (state: AppConfigState) => state;

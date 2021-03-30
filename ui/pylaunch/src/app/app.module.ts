@@ -8,12 +8,12 @@ import { filter } from 'rxjs/operators';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { configReducer } from './domain/ui-config/ui.config.reducer';
-import { selectTestConfig } from './domain/ui-config/ui.config.selector';
+import { selectConfig } from './domain/ui-config/ui.config.selector';
 import { BridgeTestComponent } from './infrastructure/bridge-backend/bridge-test/bridge-test.component';
 import { HeaderComponent } from './ui/header/header.component';
 import { EffectsModule } from '@ngrx/effects';
-import { ConfigEffect } from './domain/ui-config/ui.config.effects';
-import { asyncLoadConfig } from './domain/ui-config/ui.config.action';
+import { ConfigEffects } from './domain/ui-config/ui.config.effects';
+import { asyncLoadConfig, asyncLoadConfigAvailable } from './domain/ui-config/ui.config.action';
 
 @NgModule({
   declarations: [
@@ -24,12 +24,14 @@ import { asyncLoadConfig } from './domain/ui-config/ui.config.action';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ config: configReducer }),
+    StoreModule.forRoot({ configuration: configReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
     }),
-    EffectsModule.forRoot([ConfigEffect])
+    EffectsModule.forRoot([
+      ConfigEffects
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -38,7 +40,7 @@ export class AppModule {
   constructor(
     store: Store
   ) {
-    store.dispatch(asyncLoadConfig());
-    // store.select(selectTestConfig).subscribe((v) => console.log(v));
+    store.dispatch(asyncLoadConfig(null));
+    store.select(selectConfig).subscribe((config) => console.log(config));
   }
 }

@@ -1,5 +1,7 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { AppConfigState } from './ui.config.interface';
 
-const createBridgeAction = (name) => createAction(`[Bridge Frontend] ${name}`);
+const bridgeAction = (name) => createAction(`[Bridge Frontend] ${name}`, props<AppConfigState>());
 
-export const asyncLoadConfig = createBridgeAction('Async Load Config')
+export const asyncLoadConfig = bridgeAction('Config Loading')
+export const asyncLoadConfigAvailable = bridgeAction('Config Available')
