@@ -4,16 +4,20 @@
 
 ```mermaid
 graph LR
+	user -- triggers --> syntaxCheck
+	user -- checks --> errorModal
+	user -- navigates using --> toolbar -- to --> fragment
 	subgraph App
         app -- holds --> list -- of --> script
         configfile -- setups --> app
 	end
 	subgraph User
-        user -- stores --> s1("script") -- to --> disk
+        user -- stores --> s1("script") -- to --> disk & cloud
         user -- loads --> script
         user -- runs --> s2("script") -- shows result --> window -- to --> user
         user -- creates new --> script
         user -- edits --> s3("script") -- in --> editor
+        
 	end
 	subgraph Developer
         developer -- edits --> configfile
@@ -21,6 +25,13 @@ graph LR
 	end
 	subgraph Script
 		script -- executes --> sourcecode
+	end
+	subgraph Editor
+		syntaxCheck(syntax check) -- validates --> script
+		errorModal(error modal) -- shows fails of --> script
+	end
+	subgraph Page
+		fragment -- holds --> page
 	end
 ```
 
@@ -51,10 +62,6 @@ graph TD
 	
 	subgraph Store
 		state
-	end
-	
-	subgraph StoreConfig [Store Config]
-		
 	end
 ````
 
