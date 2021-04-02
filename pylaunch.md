@@ -6,7 +6,7 @@
 graph LR
 	user -- triggers --> syntaxCheck
 	user -- checks --> errorModal
-	user -- navigates using --> toolbar -- to --> fragment
+	user -- navigates using --> toolbar -- to --> p1
 	subgraph App
         app -- holds --> list -- of --> script
         configfile -- setups --> app
@@ -31,7 +31,7 @@ graph LR
 		errorModal(error modal) -- shows fails of --> script
 	end
 	subgraph Page
-		fragment -- holds --> page
+		p1(page) -- holds --> component
 	end
 ```
 
@@ -65,3 +65,8 @@ graph TD
 	end
 ````
 
+## Project Assets
+
+#### Links
+
+https://coolors.co/1500ff-007bff-00eeff-00ffcb-00ff5d
