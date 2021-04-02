@@ -1,0 +1,10 @@
+.toolbar {
+  display: flex;
+  background-color: #00EEFF;
+  border-bottom: 2px solid #1500FF;
+  padding: 12px 0px;
+}
+
+app-toolbar-item:last-child {
+  border-right: 1px solid #1500FF;
+}

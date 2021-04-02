@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment.prod';
-import { filter } from 'rxjs/operators';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,20 +12,26 @@ import { BridgeTestComponent } from './infrastructure/bridge-backend/bridge-test
 import { HeaderComponent } from './ui/header/header.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ConfigEffects } from './domain/ui-config/ui.config.effects';
-import { asyncLoadConfig, asyncLoadConfigAvailable } from './domain/ui-config/ui.config.action';
+import { asyncLoadConfig } from './domain/ui-config/ui.config.action';
 import { ToolbarComponent } from './ui/toolbar/toolbar.component';
+import { ToolbarItemComponent } from './ui/toolbar/toolbar-item.component';
+import { navigationReducer } from './domain/navigation/navigation.reducer';
 
 @NgModule({
   declarations: [
     AppComponent,
     BridgeTestComponent,
     HeaderComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ToolbarItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ configuration: configReducer }),
+    StoreModule.forRoot({
+      configuration: configReducer,
+      navigation: navigationReducer
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
@@ -39,10 +44,5 @@ import { ToolbarComponent } from './ui/toolbar/toolbar.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(
-    store: Store
-  ) {
-    store.dispatch(asyncLoadConfig(null));
-    store.select(selectConfig).subscribe((config) => console.log(config));
-  }
+
 }
