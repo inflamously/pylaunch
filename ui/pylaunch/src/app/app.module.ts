@@ -14,12 +14,14 @@ import { HeaderComponent } from './ui/header/header.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ConfigEffects } from './domain/ui-config/ui.config.effects';
 import { asyncLoadConfig, asyncLoadConfigAvailable } from './domain/ui-config/ui.config.action';
+import { ToolbarComponent } from './ui/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BridgeTestComponent,
-    HeaderComponent
+    HeaderComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
