@@ -31,7 +31,7 @@ graph LR
 		errorModal(error modal) -- shows fails of --> script
 	end
 	subgraph Page
-		p1(page) -- holds --> component
+		p1(page) -- contains --> fragment/s -- hold --> component/s
 	end
 ```
 
