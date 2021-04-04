@@ -1,0 +1,10 @@
+<div class="page">
+  <ng-container *ngIf="fragmentPresent else noLayout">
+    <app-page-layout>
+      <ng-content select="app-page-fragment"></ng-content>
+    </app-page-layout>
+  </ng-container>
+  <ng-template #noLayout>
+    <ng-content></ng-content>
+  </ng-template>
+</div>
