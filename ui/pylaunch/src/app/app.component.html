@@ -1,8 +1,16 @@
 <ng-container>
   <app-header></app-header>
   <app-toolbar></app-toolbar>
-  <app-page>
-    <app-page-fragment>Test Worked.</app-page-fragment>
-    <p>This</p>
-  </app-page>
+  <app-frame>
+    <ng-template #page>
+      <app-page>
+        <app-page-fragment>Editor</app-page-fragment>
+      </app-page>
+    </ng-template>
+    <ng-template #page>
+      <app-page>
+        <app-page-fragment>Scripts</app-page-fragment>
+      </app-page>
+    </ng-template>
+  </app-frame>
 </ng-container>

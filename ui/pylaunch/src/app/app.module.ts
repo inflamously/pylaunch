@@ -17,6 +17,7 @@ import { navigationReducer } from './domain/navigation/navigation.reducer';
 import { PageComponent } from './ui/page/page.component';
 import { PageFragmentComponent } from './ui/page/page-fragment.component';
 import { PageLayoutComponent } from './ui/page/page-layout.component';
+import { FrameComponent } from './ui/frame/frame.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PageLayoutComponent } from './ui/page/page-layout.component';
     PageComponent,
     PageFragmentComponent,
     PageLayoutComponent,
+    FrameComponent,
   ],
   imports: [
     BrowserModule,
