@@ -1,7 +1,7 @@
 import os
 import unittest
 import pylaunch
-from interaction.json_store import json_store
+from adapter.json_store import json_store
 
 
 class TestPylaunch(unittest.TestCase):

@@ -21,7 +21,12 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**",
+                "input": ".\\node_modules\\bootstrap\\dist\\",
+                "output": ".\\assets\\bootstrap"
+              }
             ],
             "styles": [
               "src/styles.css"

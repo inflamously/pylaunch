@@ -1,17 +1,27 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { EffectsModule } from '@ngrx/effects';
+import { createAction, Store, StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
+import { ConfigEffects } from './domain/ui-config/ui.config.effects';
+import { configReducer } from './domain/ui-config/ui.config.reducer';
 
 describe('AppComponent', () => {
+  let store = undefined;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        StoreModule.forRoot({ configuration: configReducer }),
+        EffectsModule.forRoot([ConfigEffects])
       ],
       declarations: [
         AppComponent
       ],
     }).compileComponents();
+
+    store = TestBed.inject(Store);
   });
 
   it('should create the app', () => {
@@ -20,16 +30,8 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'pylaunch'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('pylaunch');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('pylaunch app is running!');
+  it('should have injected store', (done) => {
+    expect(store).toBeTruthy()
+    done();
   });
 });
