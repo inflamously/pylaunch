@@ -3,6 +3,7 @@ import { ContentChildren, QueryList, TemplateRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { NavigationState } from 'src/app/domain/navigation/navigation.interface';
 import { selectPage } from 'src/app/domain/navigation/navigation.selector';
 
 @Component({
@@ -17,7 +18,7 @@ export class FrameComponent implements OnInit, AfterContentInit {
   @ContentChildren(TemplateRef) pageTemplates = new QueryList<TemplateRef<any>>();
 
   constructor(
-    private store: Store
+    private store: Store<{navigation: NavigationState}>
   ) {
     this.$page = this.store.select(selectPage);
   }

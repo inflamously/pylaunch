@@ -6,18 +6,18 @@ import { environment } from 'src/environments/environment.prod';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { configReducer } from './domain/ui-config/ui.config.reducer';
 import { BridgeTestComponent } from './infrastructure/bridge-backend/bridge-test/bridge-test.component';
 import { HeaderComponent } from './ui/header/header.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ConfigEffects } from './domain/ui-config/ui.config.effects';
 import { ToolbarComponent } from './ui/toolbar/toolbar.component';
 import { ToolbarItemComponent } from './ui/toolbar/toolbar-item.component';
-import { navigationReducer } from './domain/navigation/navigation.reducer';
 import { PageComponent } from './ui/page/page.component';
 import { PageFragmentComponent } from './ui/page/page-fragment.component';
 import { PageLayoutComponent } from './ui/page/page-layout.component';
 import { FrameComponent } from './ui/frame/frame.component';
+import { NavigationReducerMap } from './domain/navigation/navigation.reducer';
+import { AppConfigStateReducerMap } from './domain/ui-config/ui.config.reducer';
 
 @NgModule({
   declarations: [
@@ -35,8 +35,8 @@ import { FrameComponent } from './ui/frame/frame.component';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({
-      configuration: configReducer,
-      navigation: navigationReducer
+      ...AppConfigStateReducerMap,
+      ...NavigationReducerMap
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
@@ -50,5 +50,4 @@ import { FrameComponent } from './ui/frame/frame.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
 }

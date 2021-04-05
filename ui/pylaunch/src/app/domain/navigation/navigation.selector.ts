@@ -1,4 +1,9 @@
+import { createSelector } from "@ngrx/store";
 import { NavigationState } from "./navigation.interface";
+import { NavigationStateMap } from "./navigation.reducer";
 
-// TODO: Check how to retrieve state data from specific reducer group.
-export const selectPage = (state: {navigation: NavigationState}) => state.navigation.page;
+export const selectNavigationState = (state: NavigationStateMap) => state.navigation;
+export const selectPage = createSelector(
+  selectNavigationState,
+  (state: NavigationState) => state.page
+)

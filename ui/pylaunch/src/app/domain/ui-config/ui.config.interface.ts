@@ -1,3 +1,3 @@
 export interface AppConfigState {
-  root?: {}
+  params: {}
 }
