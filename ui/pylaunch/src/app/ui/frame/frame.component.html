@@ -1,6 +1,19 @@
 <div class="frame">
-  <ng-container *ngFor="let pageTemplate of pageTemplates">
-    <ng-container *ngTemplateOutlet="pageTemplate;context:null">
+  <ng-container [ngSwitch]="(page$ | async)">
+    <ng-container *ngSwitchCase="'root-view'">
+      <p>Welcome to Root page.</p>
+    </ng-container>
+    <ng-container *ngSwitchCase="'editor-view'">
+      <app-page>
+        <app-page-fragment>
+          <app-editor></app-editor>
+        </app-page-fragment>
+      </app-page>
+    </ng-container>
+    <ng-container *ngSwitchCase="'script-view'">
+      <app-page>
+        <app-page-fragment>Scripts</app-page-fragment>
+      </app-page>
     </ng-container>
   </ng-container>
 </div>

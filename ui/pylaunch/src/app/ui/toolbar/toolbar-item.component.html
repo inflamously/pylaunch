@@ -1,5 +1,5 @@
 <div class="toolbar-item px-2">
-  <ng-container [ngSwitch]="itemType">
+  <ng-container [ngSwitch]="type">
     <ng-container *ngSwitchCase="'button'">
       <button type="button" class="btn" (click)="dispatchAction($event)"><ng-content></ng-content></button>
     </ng-container>

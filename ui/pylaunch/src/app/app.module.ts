@@ -18,6 +18,7 @@ import { PageLayoutComponent } from './ui/page/page-layout.component';
 import { FrameComponent } from './ui/frame/frame.component';
 import { NavigationReducerMap } from './domain/navigation/navigation.reducer';
 import { AppConfigStateReducerMap } from './domain/ui-config/ui.config.reducer';
+import { EditorComponent } from './ui/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AppConfigStateReducerMap } from './domain/ui-config/ui.config.reducer';
     PageFragmentComponent,
     PageLayoutComponent,
     FrameComponent,
+    EditorComponent,
   ],
   imports: [
     BrowserModule,

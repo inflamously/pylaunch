@@ -10,7 +10,7 @@ import { navigateToPage } from './toolbar.action';
 })
 export class ToolbarItemComponent implements OnInit {
 
-  @Input() itemType;
+  @Input() type;
   @Input() payload: ToolbarActionPayload;
 
   constructor(

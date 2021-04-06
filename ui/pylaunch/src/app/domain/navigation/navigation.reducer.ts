@@ -3,7 +3,7 @@ import { navigateToPage } from "src/app/ui/toolbar/toolbar.action";
 import { NavigationState } from "./navigation.interface";
 
 const initialState: NavigationState = {
-  page: 'root'
+  page: 'root-view'
 }
 
 export const navigationReducer = createReducer(
