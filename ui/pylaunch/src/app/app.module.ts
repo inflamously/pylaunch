@@ -19,6 +19,7 @@ import { FrameComponent } from './ui/frame/frame.component';
 import { NavigationReducerMap } from './domain/navigation/navigation.reducer';
 import { AppConfigStateReducerMap } from './domain/ui-config/ui.config.reducer';
 import { EditorComponent } from './ui/editor/editor.component';
+import { NavigatorDirective } from './domain/navigation/navigator.directive';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EditorComponent } from './ui/editor/editor.component';
     PageLayoutComponent,
     FrameComponent,
     EditorComponent,
+    NavigatorDirective,
   ],
   imports: [
     BrowserModule,

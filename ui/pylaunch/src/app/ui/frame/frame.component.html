@@ -1,19 +1,15 @@
 <div class="frame">
-  <ng-container [ngSwitch]="(page$ | async)">
-    <ng-container *ngSwitchCase="'root-view'">
+  <app-page *navigator="'root-view'">
+    <app-page-fragment>
       <p>Welcome to Root page.</p>
-    </ng-container>
-    <ng-container *ngSwitchCase="'editor-view'">
-      <app-page>
-        <app-page-fragment>
-          <app-editor></app-editor>
-        </app-page-fragment>
-      </app-page>
-    </ng-container>
-    <ng-container *ngSwitchCase="'script-view'">
-      <app-page>
-        <app-page-fragment>Scripts</app-page-fragment>
-      </app-page>
-    </ng-container>
-  </ng-container>
+    </app-page-fragment>
+  </app-page>
+  <app-page *navigator="'editor-view'">
+    <app-page-fragment>
+      <app-editor></app-editor>
+    </app-page-fragment>
+  </app-page>
+  <app-page *navigator="'script-view'">
+    <app-page-fragment>Scripts</app-page-fragment>
+  </app-page>
 </div>
