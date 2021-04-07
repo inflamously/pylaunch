@@ -1,6 +1,7 @@
 from fuelstarter import fuelstarter
 import eel
 
+
 from infrastructure.bridge_frontend import bridge
 from infrastructure.json_store import json_store
 
