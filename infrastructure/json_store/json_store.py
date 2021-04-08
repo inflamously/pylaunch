@@ -6,7 +6,7 @@ def load_config(path) -> dict:
 
 
 def save_config(path):
-    with open(path, "w") as f:
+    with open(path, "w") as _:
         pass
 
 
