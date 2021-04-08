@@ -1,5 +1,6 @@
 # Ignore JetBrains IDE
 .idea/
+ui/pylaunch/.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
