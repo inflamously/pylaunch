@@ -3,6 +3,6 @@
   "index-file": "index.html",
   "script-provider": {
     "local-path": "$script_provider_path$/local-scripts",
-    "synced-path": "$script_provider_path$/sync-scripts"
+    "sync-path": "$script_provider_path$/sync-scripts"
   }
 }

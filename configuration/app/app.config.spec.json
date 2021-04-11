@@ -1,4 +1,8 @@
 {
-  "ui-path": "./ui",
-  "index": "main.html"
+  "ui-path": "./ui/pylaunch/dist/pylaunch/",
+  "index-file": "index.html",
+  "script-provider": {
+    "local-path": "$script_provider_path$/local-scripts",
+    "sync-path": "$script_provider_path$/sync-scripts"
+  }
 }
