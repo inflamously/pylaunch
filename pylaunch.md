@@ -2,6 +2,17 @@
 
 ## Domain Views
 
+---
+
+### User Stories
+
+As a User I want to edit python scripts to modify my source code and be able to program.
+As a User I want to execute my python scripts to automate and interact with other programs and simplify everyday tasks.
+As a User I want to store (disk) / download (cloud) my scripts to have them available at all times.
+As a User, I would like to update the program to stay up to date and get the latest features.
+
+---
+
 ```mermaid
 graph LR
 	script{Script}
@@ -18,11 +29,6 @@ graph LR
         user -- stores --> configfile{Configfile}
 	end
 ```
-
-As an User I want to edit python scripts to modify their source code.
-As an User I want to execute my python scripts to automate and interact with my programs.
-As an User I want to store (disk) and download (cloud) my scripts anytime without hassle.
-As an User I want to update the program without thinking about it.
 
 ```mermaid
 graph LR
@@ -92,6 +98,22 @@ graph TD
 		state
 	end
 ````
+
+##### Script Provider possible dependency-problem investigation graph
+
+```mermaid
+graph TD
+	ScriptProvider
+	GenericProvider
+	Provider
+	provider_factory[Provider Factory]
+	Parser
+	Parser -- load_config --> provider_factory
+	provider_factory -- instantiates of provider_name --> ScriptProvider
+    ScriptProvider -- polymorphs into --> GenericProvider
+    GenericProvider -- passed to --> Parser
+    Provider -- bound to --- Parser & provider_factory
+```
 
 ## Project Assets
 
