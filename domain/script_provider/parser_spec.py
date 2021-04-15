@@ -7,33 +7,30 @@ from infrastructure.json_store import json_store
 
 
 class ParserTest(unittest.TestCase):
-    config_path = "./configuration/app/app.config.json"
+    config_provider_name = "ScriptProvider"
+    config_path = "./configuration/app/app.config.spec.json"
 
     def test_load_config(self):
-        config_parser = parser.load_config(self.config_path)
+        config_parser = parser.load_config(self.config_path, self.config_provider_name)
         self.assertIsNotNone(config_parser)
 
 
     def test_variable_input_empty(self):
-        config_parser = parser.load_config(self.config_path)
+        config_parser = parser.load_config(self.config_path, self.config_provider_name)
         with self.assertRaises(exceptions.EmptyVariable):
-            config_parser.assign_variables_with({"":""})            
+            config_parser.assign_variables({"":""})            
 
 
     def test_variable_input_error_invalid_symbol(self):
-        config_parser = parser.load_config(self.config_path)
+        config_parser = parser.load_config(self.config_path, self.config_provider_name)
         with self.assertRaises(exceptions.InvalidVariableSymbol):
-            config_parser.assign_variables_with({"$test":"","$test$":""})
+            config_parser.assign_variables({"$test":"","$test$":""})
             
 
     def test_variable_parse(self):
-        config_parser = parser.load_config(self.config_path)
-        # check has variable
-
-        config_parser.assign_variables_with({"$script_provider_path$":"./domain/script_provider"})
-        script_provider = config_parser.apply()
-
-        # test variable change
+        config_parser = parser.load_config(self.config_path, self.config_provider_name)
+        parsed_config = config_parser.assign_variables({"$script_provider_path$":"./domain/script_provider"})
+        self.assertDictEqual(parsed_config.config(), {'local-path': './domain/script_provider/local-scripts', 'sync-path': './domain/script_provider/sync-scripts'})
 
 if __name__ == '__main__':
     unittest.main()

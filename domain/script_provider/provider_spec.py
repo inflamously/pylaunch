@@ -1,13 +1,13 @@
 import os
 import unittest
-from domain.script_provider import script_provider
+from domain.script_provider import provider_factory
 from infrastructure.json_store import json_store
 
 
 class ScriptProviderTest(unittest.TestCase):
 
-
-    config_path = "./configuration/app/app.config.json"
+    config_provider_name = "ScriptProvider"
+    config_path = "./configuration/app/app.config.spec.json"
 
 
     def test_config(self):
@@ -17,11 +17,13 @@ class ScriptProviderTest(unittest.TestCase):
 
 
     def test_query_config(self):
-        script_provider_config = script_provider.query_config(self.config_path)
+        script_provider_config = provider_factory.factory(self.config_path, self.config_provider_name)
         self.assertIsNotNone(script_provider_config)
-        self.assertTrue("local-path" in script_provider_config)
-        self.assertTrue("sync-path" in script_provider_config)
 
+
+    def test_finder(self):
+        script_provider_config = provider_factory.factory(self.config_path, self.config_provider_name)
+        self.assertListEqual(script_provider_config.search("local-path"), [{'local-path': '$script_provider_path$/local-scripts'}])
 
 if __name__ == '__main__':
     unittest.main()
