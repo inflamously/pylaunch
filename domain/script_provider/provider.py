@@ -1,19 +1,8 @@
 import copy
-import abc
+from domain.script_provider import generic_provider 
 
 
-SCRIPT_CONFIG_VAR_SYMBOL = "$"
-
-
-class GenericProvider(abc.ABC):
-
-
-    @abc.abstractmethod
-    def config(self):
-        ...
-
-
-class ScriptProvider(GenericProvider):
+class ScriptProvider(generic_provider.GenericProvider):
     
 
     def __find(self, flatlist, search_string, config):
