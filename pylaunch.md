@@ -105,14 +105,29 @@ graph TD
 graph TD
 	ScriptProvider
 	GenericProvider
-	Provider
 	provider_factory[Provider Factory]
 	Parser
 	Parser -- load_config --> provider_factory
 	provider_factory -- instantiates of provider_name --> ScriptProvider
     ScriptProvider -- polymorphs into --> GenericProvider
+    provider_factory -- passed provider --> Parser
     GenericProvider -- passed to --> Parser
-    Provider -- bound to --- Parser & provider_factory
+    GenericProvider --> ScriptProvider 
+```
+
+#### Script Provider defined using proxy
+
+```mermaid
+graph TD
+	ProviderProxy
+	ScriptProvider
+	GenericProvider
+	Parser
+	ProviderProxy --> GenericProvider & ScriptProvider
+	any_providerproxy[Anything as ProviderProxy] -- passed to constructor --> GenericProvider
+	ProviderProxy ---
+    any_providerproxy
+	GenericProvider -- used by --> Parser
 ```
 
 ## Project Assets
