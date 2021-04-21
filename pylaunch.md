@@ -99,35 +99,22 @@ graph TD
 	end
 ````
 
-##### Script Provider possible dependency-problem investigation graph
+#### Script Provider current state
 
 ```mermaid
-graph TD
-	ScriptProvider
-	GenericProvider
-	provider_factory[Provider Factory]
-	Parser
-	Parser -- load_config --> provider_factory
-	provider_factory -- instantiates of provider_name --> ScriptProvider
-    ScriptProvider -- polymorphs into --> GenericProvider
-    provider_factory -- passed provider --> Parser
-    GenericProvider -- passed to --> Parser
-    GenericProvider --> ScriptProvider 
-```
-
-#### Script Provider defined using proxy
-
-```mermaid
-graph TD
-	ProviderProxy
-	ScriptProvider
-	GenericProvider
-	Parser
-	ProviderProxy --> GenericProvider & ScriptProvider
-	any_providerproxy[Anything as ProviderProxy] -- passed to constructor --> GenericProvider
-	ProviderProxy ---
-    any_providerproxy
-	GenericProvider -- used by --> Parser
+graph TB
+	subgraph Dependent
+        GenericProvider
+        parser(Parser)
+		ProviderFactory
+	end
+	parser --> ProviderFactory
+	ProviderFactory --- Config --- ScriptProvider
+	ProviderFactory -- instantiates --> ScriptProvider
+	ProviderFactory -- creates --> GenericProvider
+	GenericProvider -- passed to --> parser
+	GenericProvider -- implements --> ScriptProvider
+	
 ```
 
 ## Project Assets
