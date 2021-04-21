@@ -32,7 +32,7 @@ class ProviderConfigParser():
         return self.script_provider.apply(config)
 
 
-def load_config(config_path, provider_name) -> ProviderConfigParser:
-    config = provider_factory.factory(config_path, provider_name)
-    
+def load_config(config_path) -> ProviderConfigParser:
+    config = provider_factory.create_provider(config_path, "script-provider")
+
     return ProviderConfigParser(config)
