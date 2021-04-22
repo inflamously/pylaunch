@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { EffectsModule } from '@ngrx/effects';
-import { createAction, Store, StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { ConfigEffects } from './domain/ui-config/ui.config.effects';
 import { configReducer } from './domain/ui-config/ui.config.reducer';

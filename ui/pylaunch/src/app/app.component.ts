@@ -16,6 +16,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadConfig();
+  }
+
+  loadConfig() {
     this.store.dispatch(asyncLoadConfig(null));
   }
 }

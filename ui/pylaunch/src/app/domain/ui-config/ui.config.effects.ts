@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { from } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
-import { eel } from "src/app/infrastructure/bridge-backend/eel";
+import { eel } from "src/app/infrastructure/bridge-eel/eel";
 import { asyncLoadConfig, asyncLoadConfigAvailable } from "./ui.config.action";
 
 @Injectable()

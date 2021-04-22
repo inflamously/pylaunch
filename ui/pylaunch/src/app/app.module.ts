@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment.prod';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BridgeTestComponent } from './infrastructure/bridge-backend/bridge-test/bridge-test.component';
 import { HeaderComponent } from './ui/header/header.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ConfigEffects } from './domain/ui-config/ui.config.effects';
@@ -24,7 +23,6 @@ import { NavigatorDirective } from './domain/navigation/navigator.directive';
 @NgModule({
   declarations: [
     AppComponent,
-    BridgeTestComponent,
     HeaderComponent,
     ToolbarComponent,
     ToolbarItemComponent,
