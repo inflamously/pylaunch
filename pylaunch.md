@@ -109,11 +109,12 @@ graph TB
 		ProviderFactory
 	end
 	parser --> ProviderFactory
-	ProviderFactory --- Config --- ScriptProvider
+	ProviderFactory --- Config
+	ScriptProvider --- Config
 	ProviderFactory -- instantiates --> ScriptProvider
 	ProviderFactory -- creates --> GenericProvider
 	GenericProvider -- passed to --> parser
-	GenericProvider -- implements --> ScriptProvider
+	ScriptProvider -- implements --> GenericProvider
 	
 ```
 
