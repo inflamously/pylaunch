@@ -12,7 +12,7 @@ class ProviderConfigParser():
         self.script_provider = script_provider
     
 
-    def assign_variables(self, vars: dict) -> generic_provider.GenericProvider:
+    def instantiate_provider(self, vars: dict) -> generic_provider.GenericProvider:
         if len(vars) > 0:
             for key in vars.keys():
                 if len(key) <= 0: raise exceptions.EmptyVariable(key)
@@ -30,9 +30,3 @@ class ProviderConfigParser():
             for key_var in vars.keys():
                 config[key_config] = config[key_config].replace(key_var, vars[key_var])
         return self.script_provider.apply(config)
-
-
-def load_config(config_path) -> ProviderConfigParser:
-    config = provider_factory.create_provider(config_path, "script-provider")
-
-    return ProviderConfigParser(config)

@@ -15,3 +15,13 @@ class GenericProvider(abc.ABC):
     @abc.abstractmethod
     def config(self):
         ...
+
+    
+    @abc.abstractmethod
+    def apply(self):
+        ...
+
+
+    @abc.abstractmethod
+    def scripts(self):
+        ...

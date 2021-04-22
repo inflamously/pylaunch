@@ -25,5 +25,6 @@ class ScriptProviderTest(unittest.TestCase):
         script_provider_config = provider_factory.create_provider(self.test_config_path, self.test_provider_type)
         self.assertListEqual(script_provider_config.search("local-path"), [{'local-path': '$script_provider_path$/local-scripts'}])
 
+
 if __name__ == '__main__':
     unittest.main()

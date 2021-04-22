@@ -35,6 +35,11 @@ class ScriptProvider(generic_provider.GenericProvider):
     def apply(self, config):
         return ScriptProvider(config)
 
+
+    def scripts(self):
+        // TODO: Implement
+        ...
+
     
     def __str__(self):
         return str(self.__config)
