@@ -76,6 +76,8 @@ graph LR
 
 ## Technical Views
 
+#### Frontend – Backend
+
 ````mermaid
 graph TD
 	bf --> bb --> bf
@@ -117,6 +119,12 @@ graph TB
 	ScriptProvider -- implements --> GenericProvider
 	
 ```
+
+#### Idea: Mini Apps & Modules
+
+* Module_XYZ.py – Interface which @Inputs / @Outputs via Methods (Exchange Data and Sideeffects)
+* Tests in a Module can reference classes
+* Outside of Module no one should be able to access class
 
 ## Project Assets
 
