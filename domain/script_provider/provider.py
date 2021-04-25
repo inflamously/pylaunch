@@ -37,7 +37,7 @@ class ScriptProvider(generic_provider.GenericProvider):
 
 
     def scripts(self):
-        // TODO: Implement
+        # TODO: Implements script instance creation and handles various cases by various classes LocalScriptProvider, RemoteScriptProvider...
         ...
 
     

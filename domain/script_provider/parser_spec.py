@@ -3,18 +3,18 @@ import unittest
 from domain.script_provider import provider
 from domain.script_provider import parser
 from domain.script_provider import exceptions
-from infrastructure.json_store import json_store
+from infrastructure.json_store import module_json_store
 
 
 class ParserTest(unittest.TestCase):
 
 
-    test_config_path = "./configuration/app/app.config.spec.json"
+    json_store = module_json_store.JsonStoreModule(path="./configuration/app/app.config.spec.json")
     test_provider_parser_config = {"$script_provider_path$":"./domain/script_provider"}
     
 
     def __init__(self, methodName: str=...):
-        self.test_script_provider_parser = parser.load_config(self.test_config_path)
+        self.test_script_provider_parser = parser.ProviderConfigParser(provider.ScriptProvider(self.json_store.configuration["script-provider"]))
         super().__init__(methodName)
 
 

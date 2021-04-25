@@ -1,4 +1,3 @@
-from domain.script_provider import provider_factory
 from domain.script_provider import generic_provider
 from domain.script_provider import exceptions
 
@@ -7,8 +6,6 @@ class ProviderConfigParser():
 
 
     def __init__(self, script_provider: generic_provider.GenericProvider):
-        if len(script_provider.search("local-path")) <= 0: raise exceptions.ConfigVariableNotFound("local-path")
-        if len(script_provider.search("sync-path")) <= 0: raise exceptions.ConfigVariableNotFound("sync-path")
         self.script_provider = script_provider
     
 
@@ -26,6 +23,7 @@ class ProviderConfigParser():
 
     def __assign_variables(self, vars: dict) -> generic_provider.GenericProvider:
         config = self.script_provider.config()
+        print("config", self.script_provider.config())
         for key_config in config.keys():
             for key_var in vars.keys():
                 config[key_config] = config[key_config].replace(key_var, vars[key_var])

@@ -2,19 +2,25 @@ from fuelstarter import fuelstarter
 import eel
 
 
-from domain.script_provider import provider
+from domain.script_provider import module_script_provider
 from infrastructure.bridge_frontend import bridge
 from infrastructure.json_store import json_store
-from application import pylaunch_global
+from infrastructure.json_store import module_json_store
 
 
-def setup_app(configuration):
+JsonStoreModule = module_json_store.JsonStoreModule(
+    path="./configuration/app/app.config.json")
+ScriptProviderModule = module_script_provider.ScriptProviderModule(
+    configuration=JsonStoreModule.configuration,
+    provider="script-provider",
+    variables={"$script_provider_path$":"./domain/script_provider"}) # TODO: Extract to config
+
+
+def setup_app():
     bridge.init()
-    pylaunch_global.provider_setup(configuration, {"$script_provider_path$":"./domain/script_provider"})
-    eel.init(configuration["ui-path"])
-    eel.start(configuration["index-file"])
+    eel.init(JsonStoreModule.configuration["ui-path"])
+    eel.start(JsonStoreModule.configuration["index-file"])
 
 
 if __name__ == '__main__':
-    config = json_store.load_config("./configuration/app/app.config.json")
-    setup_app(config)
+    setup_app()
