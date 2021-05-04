@@ -9,13 +9,26 @@ class ParserTest(unittest.TestCase):
     json_store = module_json_store.JsonStoreModule(path="./configuration/app/app.config.json")
 
 
-    def test_module_script_provider(self):
-        instance = module_script_provider.ScriptProviderModule(
+    def __init__(self, methodName: str=...):
+        self.instance = module_script_provider.ScriptProviderModule(
             configuration=self.json_store.configuration["script-provider"], 
-            provider="script-provider")
-        instance.parser(variables={"$script_provider_path$":"./domain/script_provider"})
-        self.assertIsNotNone(instance)
-        self.assertIsNotNone(instance.script_provider)
+            provider="script-provider"
+        )
+        super().__init__(methodName)
+
+
+    def test_module_script_provider(self):
+        self.assertIsNotNone(self.instance)
+
+
+    def test_module_script_parse_none(self):
+        self.instance.parse()
+        self.assertIsNotNone(self.instance.script_provider)
+
+
+    def test_module_script_parse_empty(self):
+        self.instance.parse({})
+        self.assertIsNotNone(self.instance.script_provider)
 
 
 if __name__ == '__main__':

@@ -23,5 +23,5 @@ class GenericProvider(abc.ABC):
 
 
     @abc.abstractmethod
-    def scripts(self):
+    def query_scripts(self):
         ...

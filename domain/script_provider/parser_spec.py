@@ -10,7 +10,7 @@ class ParserTest(unittest.TestCase):
 
 
     json_store = module_json_store.JsonStoreModule(path="./configuration/app/app.config.spec.json")
-    test_provider_parser_config = {"$script_provider_path$":"./domain/script_provider"}
+    variables = {"$script_provider_path$":"./domain/script_provider"}
     
 
     def __init__(self, methodName: str=...):
@@ -33,7 +33,7 @@ class ParserTest(unittest.TestCase):
             
 
     def test_parser(self):
-        provider = self.test_script_provider_parser.instantiate_provider(self.test_provider_parser_config)
+        provider = self.test_script_provider_parser.instantiate_provider(self.variables)
         self.assertDictEqual(provider.config(), {'local-path': './domain/script_provider/local-scripts', 'sync-path': './domain/script_provider/sync-scripts'})
 
 

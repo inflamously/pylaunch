@@ -1,8 +1,11 @@
 {
-  "ui-path": "./ui/pylaunch/dist/pylaunch/",
-  "index-file": "index.html",
-  "script-provider": {
-    "local-path": "$script_provider_path$/local-scripts",
-    "sync-path": "$script_provider_path$/sync-scripts"
-  }
+    "ui-path": "./ui/pylaunch/dist/pylaunch/",
+    "index-file": "index.html",
+    "script-provider": {
+        "variables": {
+            "$script_provider_path$": "./domain/script_provider"
+        },
+        "local-path": "$script_provider_path$/local-scripts",
+        "sync-path": "$script_provider_path$/sync-scripts"
+    }
 }

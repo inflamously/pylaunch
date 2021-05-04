@@ -12,8 +12,7 @@ JsonStoreModule = module_json_store.JsonStoreModule(
     path="./configuration/app/app.config.json")
 ScriptProviderModule = module_script_provider.ScriptProviderModule(
     configuration=JsonStoreModule.configuration,
-    provider="script-provider",
-    variables={"$script_provider_path$":"./domain/script_provider"}) # TODO: Extract to config
+    provider="script-provider")
 
 
 def setup_app():
