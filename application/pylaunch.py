@@ -8,11 +8,13 @@ from infrastructure.json_store import json_store
 from infrastructure.json_store import module_json_store
 
 
-JsonStoreModule = module_json_store.JsonStoreModule(
+JsonStoreModule = module_json_store.JsonStoreModule(\
     path="./configuration/app/app.config.json")
-ScriptProviderModule = module_script_provider.ScriptProviderModule(
-    configuration=JsonStoreModule.configuration,
-    provider="script-provider")
+
+
+ScriptProviderModule = module_script_provider.ScriptProviderModule(\
+    configuration=JsonStoreModule.configuration["script-provider"],\
+        provider="script-provider")
 
 
 def setup_app():

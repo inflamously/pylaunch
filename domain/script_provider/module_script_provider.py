@@ -12,6 +12,7 @@ class ScriptProviderModule:
         if "provider" in kwargs:
             if kwargs["provider"] == "script-provider":
                 self.script_provider = provider.ScriptProvider(self.configuration)
+                self.parse()
 
     
     def parse(self, variables: dict=None) -> generic_provider.GenericProvider:

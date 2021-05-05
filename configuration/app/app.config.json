@@ -5,7 +5,7 @@
         "variables": {
             "$script_provider_path$": "./domain/script_provider"
         },
-        "local-path": "$script_provider_path$/local-scripts",
-        "sync-path": "$script_provider_path$/sync-scripts"
+        "local-path": "$script_provider_path$/local_scripts",
+        "sync-path": "$script_provider_path$/sync_scripts"
     }
 }

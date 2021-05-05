@@ -28,11 +28,12 @@ class ScriptProviderTest(unittest.TestCase):
 
 
     def test_finder(self):
-        self.assertListEqual(self.script_provider.search("local-path"), [{'local-path': './domain/script_provider/local-scripts'}])
+        self.assertListEqual(self.script_provider.search("local-path"), [{'local-path': './domain/script_provider/local_scripts'}])
 
     
     def test_query_scripts(self):
-        self.script_provider.query_scripts()
+        scripts = self.script_provider.query_scripts()
+        self.assertIsNotNone(scripts)
 
 
 if __name__ == '__main__':

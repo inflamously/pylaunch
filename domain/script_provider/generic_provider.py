@@ -1,7 +1,11 @@
 import abc
+import typing
+from domain.script_provider import generic_script
 
 
 SCRIPT_CONFIG_VAR_SYMBOL = "$"
+
+ScriptCollection = typing.List[generic_script.GenericScript]
 
 
 class GenericProvider(abc.ABC):
@@ -23,5 +27,5 @@ class GenericProvider(abc.ABC):
 
 
     @abc.abstractmethod
-    def query_scripts(self):
+    def query_scripts(self) -> ScriptCollection:
         ...

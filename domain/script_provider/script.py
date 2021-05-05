@@ -1,4 +1,5 @@
+from domain.script_provider import generic_script
 
 
-class Script:
+class Script(generic_script.GenericScript):
     ...

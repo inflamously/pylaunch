@@ -1,5 +1,6 @@
 import copy
-import pathlib
+import glob
+import os
 from domain.script_provider import generic_provider
 
 
@@ -41,12 +42,13 @@ class ScriptProvider(generic_provider.GenericProvider):
 
 
     def query_scripts(self):
-        local_path = pathlib.Path(self.__config["local-path"])
-        if not local_path.exists: raise ScriptProviderException("Path " + self.config["local-path"] + " does not exist.")
+        if not os.path.exists(self.__config["local-path"]): raise ScriptProviderException("Path '" + self.__config["local-path"] + "' does not exist.")
         else:
-            for script in local_path.rglob("**/*.py"):
-                ...
-            print("Script:", local_path.parent)
+            scripts = []
+            return scripts
+            # for script in glob.glob("**/*.py"):
+            #     ...
+            # print("Script:", local_path.parent)
     
     def __str__(self):
         return str(self.__config)
@@ -55,4 +57,4 @@ class ScriptProvider(generic_provider.GenericProvider):
 class ScriptProviderException(Exception):
     def __init__(self, message=""):
         self.message = message
-        super().__init__(message=message)
+        super().__init__(message)
